@@ -1,0 +1,21 @@
+<?php
+include("conexion.php");
+$id = $_REQUEST ['id'];
+$nombre= $_POST['nombre'];
+$imagen= addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+$query = "UPDATE tabla_imagen SET nombre='$nombre', imagen= '$imagen' WHERE id= '$id'";
+
+
+$resultado = $conexion ->query($query);
+
+if($resultado){
+	//echo"informacion modificada correctamente";
+	header ("Location: mostrar.php ");
+		
+	
+	//echo"se cargo informacion correctamente";
+}else{
+	echo"no se inserto";
+}
+
+?>
